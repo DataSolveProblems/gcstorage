@@ -121,6 +121,11 @@ class GCStorage:
         blob = bucket.blob(blog_blob_destination)
         blob.upload_from_filename(file_path, content_type=content_type)
         return blob
+    
+    def download_file_by_blob_by_byte_range(self, bucket, blob_name, destination_folder, start_byte, end_byte):
+        blob = bucket.blob(blob_name)
+        blob.download_to_filename(destination_folder, start_byte, end_byte)
+        print('File downloaded at {0}'.format(destination_folder))
 
     def download_file_by_blob(self, blob, destination_folder):
         if not os.path.exists(destination_folder):
