@@ -110,7 +110,7 @@ class GCStorage:
         )
         return blob_metadata
 
-    def upload_file(self, bucket, blog_blob_destination, file_path):
+    def upload_file(self, bucket, blob_destination, file_path):
         file_type = file_path.split('.')[-1]
         if file_type == 'csv':
             content_type = 'text/csv'
@@ -118,7 +118,7 @@ class GCStorage:
             content_type = 'image/vnd.adobe.photoshop'
         else:
             content_type = mimetypes.guess_type(file_path)[0]
-        blob = bucket.blob(blog_blob_destination)
+        blob = bucket.blob(blob_destination)
         blob.upload_from_filename(file_path, content_type=content_type)
         return blob
     
