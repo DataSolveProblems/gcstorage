@@ -24,9 +24,9 @@ class GCStorage:
     def __init__(self, storage_client):
         self.client = storage_client
 
-    def create_bucket(self, bucket_name, stoarge_class, location):
+    def create_bucket(self, bucket_name, storage_class, location):
         bucket = self.client.bucket(bucket_name)
-        bucket.storage_class = stoarge_class
+        bucket.storage_class = storage_class
         return self.client.create_bucket(bucket, location)
 
     def list_buckets(self):
